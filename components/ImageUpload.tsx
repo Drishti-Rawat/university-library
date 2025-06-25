@@ -18,7 +18,7 @@ const {
 // Function to get upload authentication parameters from your API
 const getUploadAuthParams = async () => {
   try {
-    const response = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`);
+    const response = await fetch(`${config.env.prodApiEndpoint}/api/auth/imagekit`);
 
     if (!response.ok) {
       const errorText = await response.text();
