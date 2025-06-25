@@ -13,3 +13,11 @@ interface Book {
         summary?: string;
         isLoanedBook?: boolean;
 }
+
+interface AuthCredentails {
+    fullName: string;
+    universityId: number;
+    universityCard: string;
+    email: string;
+    password: string;
+}

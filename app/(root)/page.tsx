@@ -5,8 +5,11 @@ import BookOverview from "@/components/BookOverview";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { sampleBooks } from "@/constants";
+import { db } from "@/database/drizzle";
+import { users } from "@/database/schema";
 
-export default function Home() {
+export default async function  Home() {
+ 
   return (
     <>
       <BookOverview   {...sampleBooks[0]} />
