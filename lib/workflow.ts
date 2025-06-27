@@ -22,6 +22,8 @@ export const sendEmail = async ({
     recipientName?: string;
 }) => {
     try {
+       // Get current year
+        const currentYear = new Date().getFullYear();
         await qstashClient.publishJSON({
             url: "https://api.emailjs.com/api/v1.0/email/send",
             method: "POST",
@@ -46,8 +48,9 @@ export const sendEmail = async ({
                     subject: subject,
                     message: message,
                     to_email: email,
-                    to_name: recipientName,
-                    from_name: "BOOKSHELF"
+                    name: recipientName,
+                    from_name: "BOOKSHELF",
+                    year :  currentYear
                 }
             }
         });
