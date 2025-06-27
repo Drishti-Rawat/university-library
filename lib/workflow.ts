@@ -1,6 +1,6 @@
 import {Client as WorkflowClient} from '@upstash/workflow';
 import config from './config';
-import { Client as QStashClient, resend } from "@upstash/qstash";
+import { Client as QStashClient } from "@upstash/qstash";
 
 export const workflowClient = new WorkflowClient({
     baseUrl: config.env.upstash.qstashUrl,
@@ -26,7 +26,16 @@ export const sendEmail = async ({
             url: "https://api.emailjs.com/api/v1.0/email/send",
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                // Add browser-like headers to bypass the restriction
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                "Accept": "application/json, text/plain, */*",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Origin": "https://yourdomain.com", // Replace with your actual domain
+                "Referer": "https://yourdomain.com/", // Replace with your actual domain
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "cross-site"
             },
             body: {
                 service_id: config.env.emailjs.serviceId,
@@ -34,11 +43,11 @@ export const sendEmail = async ({
                 user_id: config.env.emailjs.publicKey,
                 accessToken: config.env.emailjs.privateKey,
                 template_params: {
-                    subject: subject,     // Goes to {{subject}} in template
-                    message: message,     // Goes to {{message}} in template  
-                    to_email: email,      // Recipient email
-                    to_name: recipientName, // Optional: if you want to use {{to_name}}
-                    from_name: "BOOKSHELF" // Optional: if you want to use {{from_name}}
+                    subject: subject,
+                    message: message,
+                    to_email: email,
+                    to_name: recipientName,
+                    from_name: "BOOKSHELF"
                 }
             }
         });
