@@ -43,7 +43,8 @@ export const { POST } = serve<InitialData>(async (context) => {
     await sendEmail({
         email ,
         subject: "Welcome to  the Platform",
-        message : `Welcome ${fullName} to the platform. We're excited to have you on board!`
+        message : `Welcome ${fullName} to the platform. We're excited to have you on board!`,
+        recipientName: fullName
     })
   })
 
@@ -59,7 +60,8 @@ export const { POST } = serve<InitialData>(async (context) => {
         await sendEmail({
             email,
             subject: "Are you still there?",
-            message : `Hey ${fullName}, we missed you! How are you doing? We're still here for you. Let's get back to work!`
+            message : `Hey ${fullName}, we missed you! How are you doing? We're still here for you. Let's get back to work!`,
+              recipientName: fullName
         })
       })
     } else if (state === "active") {
@@ -67,7 +69,8 @@ export const { POST } = serve<InitialData>(async (context) => {
         await sendEmail({
             email,
             subject: "Welcome Back!",
-            message : ` Welcome back ${fullName}! We're glad to see you back. Let's get back to work!`
+            message : ` Welcome back ${fullName}! We're glad to see you back. Let's get back to work!`,
+              recipientName: fullName
         })
       })
     }
