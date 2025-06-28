@@ -9,6 +9,7 @@ interface Props {
 }
 
 const BookList = ({ title, books, containerClassName }: Props) => {
+  if(books.length<2) return;
   return (
     <section className={cn("space-y-8", containerClassName)}>
       {/* Section Header */}

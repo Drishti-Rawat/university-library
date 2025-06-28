@@ -7,13 +7,7 @@ import React from 'react'
 const profilePage = () => {
   return (
     <div>
-      <form action={async () => {
-        'use server'
-        await signOut()
-      }}
-      className='mb-10'>
-        <Button >LogOut</Button>
-      </form>
+      
 
       <BookList
         title="My Books"
