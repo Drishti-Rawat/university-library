@@ -90,16 +90,15 @@ const AuthForm = <T extends FieldValues>({
                     {fields.replace(/([A-Z])/g, ' $1').trim()}
                   </FormLabel>
                   <FormControl>
-                    {fields === 'universityCard' && !isSignIn ? (
+                    {(fields === 'universityCard' || fields === 'profileImage')  && !isSignIn ? (
                       <FileUpload
-                        type="image"
-                        accept="image/*"
-                        placeholder="Upload your ID"
-                        folder="ids"
-                        variant="dark"
-                        onFileChange={field.onChange}
-                      
-                      />
+                  type="image"
+                  accept="image/*"
+                  placeholder={`Upload your ${fields.replace(/([A-Z])/g, ' $1').trim()}`}
+                  folder={fields === 'profileImage' ? 'profiles' : 'ids'}
+                  variant="dark"
+                  onFileChange={field.onChange}                             
+                />
                     ) : (
                       <Input 
                         className='w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none bg-dark-300 !important' 

@@ -34,10 +34,10 @@ const BookOverview = async({title,author , genre,rating,totalCopies,availableCop
 
   return (
    
-    <section className='book-overview'>
+    <section className='flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8'>
         <div className='flex flex-1 flex-col gap-5'>
-            <h1>{title}</h1>
-            <div className='book-info'>
+            <h1 className='text-5xl font-semibold text-white md:text-7xl'>{title}</h1>
+            <div className='t-7 flex flex-row flex-wrap gap-4 text-xl text-light-100'>
                 <p>
                     By <span className='text-light-200 font-semibold'>{author}</span>
                 </p>
@@ -59,13 +59,13 @@ const BookOverview = async({title,author , genre,rating,totalCopies,availableCop
 
             </div>
 
-            <div className='book-copies'>
-                <p >Total Copies: <span>{totalCopies}</span> </p>
-                <p >Available Copies: <span>{availableCopies}</span> </p>
+            <div className='flex flex-row flex-wrap gap-4 mt-1'>
+                <p className='text-xl text-light-100' >Total Copies: <span className='ml-2 font-semibold text-primary'>{totalCopies}</span> </p>
+                <p  className='text-xl text-light-100'>Available Copies: <span className='ml-2 font-semibold text-primary'>{availableCopies}</span> </p>
               
             </div>
 
-           <p className='book-description'>
+           <p className='mt-2 text-justify text-xl text-light-100'>
                 {description}
             </p>
 

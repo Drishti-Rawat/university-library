@@ -43,7 +43,7 @@ const BorrowBook = ({userId, bookId,borrowingEligibility:{isEligible, message}}:
         }
     }
   return (
-    <Button className='book-overview_btn' onClick={handleBorrow} disabled={borrowing}>
+    <Button className='mt-4 min-h-14 w-fit bg-primary text-dark-100 hover:bg-primary/90 max-md:w-full' onClick={handleBorrow} disabled={borrowing}>
                 <Image
                     src="/icons/book.svg"
                     alt="Book Icon"

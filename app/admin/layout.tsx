@@ -1,5 +1,5 @@
 import React from 'react'
-import '@/app/admin/admin.css'
+
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import Sidebar from '@/components/admin/Sidebar'

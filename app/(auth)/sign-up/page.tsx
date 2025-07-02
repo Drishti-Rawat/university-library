@@ -15,7 +15,8 @@ const SignUppage = () => {
             email: '',
             universityId: 0,
             password: '',
-            universityCard: ''
+            universityCard: '',
+            profileImage:''
           }
         }
          onSubmit={signUp}

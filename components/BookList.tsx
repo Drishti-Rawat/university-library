@@ -9,7 +9,7 @@ interface Props {
 }
 
 const BookList = ({ title, books, containerClassName }: Props) => {
-  if(books.length<2) return;
+  if(books.length===0) return;
   return (
     <section className={cn("space-y-8", containerClassName)}>
       {/* Section Header */}
@@ -22,7 +22,7 @@ const BookList = ({ title, books, containerClassName }: Props) => {
 
       {/* Books Grid - Consistent Layout */}
       {books.length > 0 ? (
-        <ul className="book-list">
+        <ul className="mt-10 flex flex-wrap gap-5 max-xs:justify-between xs:gap-10">
           {books.map((book) => (
             <BookCard key={`${book.id}-${book.title}`} {...book} />
           ))}

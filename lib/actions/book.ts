@@ -2,8 +2,9 @@
 
 import { db } from "@/database/drizzle";
 import { books, borrowRecords } from "@/database/schema";
-import { eq } from "drizzle-orm";
+import { eq, like, or, sql } from "drizzle-orm";
 import dayjs from "dayjs";
+
 
 export const borrowBook = async (params : BorrowBookParams) => {
     const {userId, bookId} = params;
@@ -37,3 +38,28 @@ export const borrowBook = async (params : BorrowBookParams) => {
     }
 }
 
+export async function searchBooks(query: string): Promise<Book[]> {
+  if (!query || query.trim() === '') {
+    return [];
+  }
+
+  try {
+    // Method 1: Using SQL LOWER() function for case-insensitive search
+    const results = await db.select()
+      .from(books)
+      .where(
+        or(
+          sql`LOWER(${books.title}) LIKE LOWER(${`%${query}%`})`,
+          sql`LOWER(${books.author}) LIKE LOWER(${`%${query}%`})`,
+          sql`LOWER(${books.genre}) LIKE LOWER(${`%${query}%`})`,
+          // Add more searchable fields as needed
+        )
+      )
+      .limit(20);
+
+    return results;
+  } catch (error) {
+    console.error('Error searching books:', error);
+    throw new Error('Failed to search books');
+  }
+}

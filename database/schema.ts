@@ -27,6 +27,7 @@ export const users = pgTable("users", {
   status: STATUS_ENUM("status").notNull().default("PENDING"),
   role: ROLE_ENUM("role").notNull().default("USER"),
   lastActivityDate: date("last_activity_date").notNull().defaultNow(),
+  profileImage: text("profile_image"),
   createdAt: timestamp("created_at",{
   withTimezone: true,
 }).defaultNow(),
