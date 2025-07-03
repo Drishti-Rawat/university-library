@@ -9,9 +9,12 @@ import Image from 'next/image';
 import { IKImage } from 'imagekitio-next';
 import config from '@/lib/config';
 
+interface books extends BookParams {
+    id: string
+}
 interface BorrowedBooksData {
   borrow_records: BorrowRecord;
-  books:  BookParams  ; // null because of leftJoin
+  books:  books   ; // null because of leftJoin
   users: AuthCredentails ;
 }
 

@@ -16,19 +16,22 @@ interface Book {
 }
 
 interface AuthCredentails {
-   
+   id?: string;
     fullName: string;
     universityId: number;
     universityCard: string;
     email: string;
-    password: string;
+    password?: string;
     status?: 'APPROVED' | 'PENDING' | 'REJECTED';
     profileImage?: string | null
+    role?: 'ADMIN' | 'USER';
+    createdAt: Date | null;
+
 
 }
 
 interface BookParams {
-    id: string;
+   
     title : string;
     author : string;
     genre : string;

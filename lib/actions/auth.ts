@@ -10,6 +10,7 @@ import ratelimit from "../ratelimit";
 import { redirect } from "next/navigation";
 import { workflowClient } from "../workflow";
 import config from "../config";
+import { revalidatePath } from "next/cache";
 
 export const signInwithCredentials = async (params: Pick<AuthCredentails, 'email' | 'password'>)  => {
     const { email, password } = params;
@@ -123,4 +124,7 @@ export const signUp = async (params:AuthCredentails) => {
 export async function handleSignOut() {
     await signOut();
 }
+
+
+
 
